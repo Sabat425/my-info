@@ -1,17 +1,17 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sa Bat - Web Developer</title>
-    <!-- Font Awesome -->
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <!-- Google Fonts -->
+
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Background Animation -->
+
     <div class="bg-animation">
         <div class="particle"></div>
         <div class="particle"></div>
@@ -30,7 +30,6 @@
         <div class="particle"></div>
     </div>
 
-    <!-- Header -->
     <header>
         <nav>
             <div class="logo">
@@ -51,7 +50,7 @@
         </nav>
     </header>
 
-    <!-- Hero Section -->
+
     <section id="hero">
         <div class="hero-content">
             <div class="hero-text">
@@ -74,7 +73,6 @@
         </div>
     </section>
 
-    <!-- About Section -->
     <section id="about">
         <h2>About Me</h2>
         <div class="about-content">
@@ -94,7 +92,6 @@
         </div>
     </section>
 
-    <!-- Services Section -->
     <section id="services">
         <h2>Services</h2>
         <div class="services-grid">
@@ -139,7 +136,7 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
+
     <section id="contact">
         <h2>Contact Me</h2>
         <div class="social-contact">
@@ -158,7 +155,7 @@
         </div>
     </section>
 
-    <!-- Footer -->
+
     <footer>
         <div class="footer-content">
             <div class="logo">
@@ -176,4 +173,596 @@
 
     <script src="script.js"></script>
 </body>
-</html> 
+</html> --> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heya Friend!</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+        $fullyRound: 1000px;
+
+        * {  
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: 'Comic Sans MS', cursive;
+            background: linear-gradient(135deg, #ffccff, #ff99cc); /* Cute gradient background */
+            overflow: hidden;
+        }
+
+        .container {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .message-box {
+            text-align: center;
+            background: #ffe6f0;
+            padding: 20px;
+            border-radius: 20px;
+            border: 4px solid #ff66b2;
+            box-shadow: 0 0 15px rgba(255, 102, 178, 0.3);
+            animation: wobble 3s infinite;
+            max-width: 400px;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 2.2em;
+            color: #ff3399;
+            margin: 0;
+            text-shadow: 2px 2px #ffccff;
+            animation: bounce 1s infinite;
+        }
+
+        p {
+            font-size: 1.1em;
+            color: #333;
+            line-height: 1.5;
+            margin: 15px 0;
+        }
+
+        .toast {
+            position: absolute;
+            top: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #ffcc99;
+            padding: 8px 15px;
+            border-radius: 10px;
+            border: 2px solid #ff9966;
+            font-size: 0.9em;
+            color: #ff6666;
+            animation: popToast 2s ease infinite;
+        }
+
+        /* Cartoon Eyes */
+        .eyes {
+            position: absolute;
+            top: -20px;
+            left: 20px;
+            font-size: 2em;
+            color: #333;
+            animation: blink 2s infinite;
+        }
+
+        /* Little Cloud */
+        .cloud {
+            position: absolute;
+            bottom: -30px;
+            right: 20px;
+            font-size: 1.5em;
+            color: #ffccff;
+            animation: floatCloud 3s infinite;
+        }
+
+        /* Dog Button Container */
+        .button-container {
+            position: relative;
+            margin-top: 20px;
+            
+            button {
+                color: #333;
+                padding: 10px 20px;
+                font-family: 'Comic Sans MS', cursive;
+                font-size: 1.2em;
+                background-color: #ff99cc;
+                border: 3px solid #ff3399;
+                border-radius: 20px;
+                cursor: pointer;
+                position: relative;
+                box-sizing: border-box;
+            }
+            
+            &:hover {
+                .dog {
+                    transform: translate(20px, -55px) rotate(15deg);
+                    transition-delay: 0.6s;
+                }
+                
+                .paw {
+                    transition-delay: 0.3s;
+                    right: -5px;
+                    
+                    &::after {
+                        transition-delay: 0s;
+                        left: 0;
+                    }
+                    
+                    &.top {
+                        transition-delay: 0.4s;
+                        right: 40px;
+                        top: -8px;
+                    }
+                }
+                
+                .tail {
+                    opacity: 1;
+                    transition-delay: 0.6s;
+                }
+            }
+        }
+
+        .dog {
+            position: absolute;
+            width: 65px;
+            height: 65px;
+            top: -10px;
+            right: 1px;
+            transform: translate(0, 0) rotate(0);
+            transition: 0.3s transform cubic-bezier(0.33, 1, 0.68, 1);
+            
+            div {
+                position: absolute;
+            }
+            
+            .tail {
+                width: 10%;
+                height: 35%;
+                left: -50%;
+                bottom: -34%;
+                transform: rotate(-25deg);
+                transition: 0.1s opacity;
+                transition-delay: 0s;
+                opacity: 0;
+                
+                &::after {
+                    content: '';
+                    position: absolute;
+                    transform-origin: bottom center;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 50% 50% 0 0;
+                    background-color: #E1A46E;
+                    animation: infinite alternate tailSkew .3s cubic-bezier(0.65, 0, 0.35, 1);
+                }
+            }
+            
+            @keyframes tailSkew {
+                from {
+                    transform: skewX(15deg);
+                }
+                
+                to {
+                    transform: skewX(-15deg);
+                }
+            }
+
+            .body {
+                width: 70%;
+                height: 50%;
+                bottom: -20%;
+                left: 50%;
+                transform: translateX(-50%);
+                background-color: #9F6A43;
+                border-radius: 50% 50% 0 0;
+            }
+            
+            .head {
+                width: 65%;
+                height: 70%;
+                bottom: 5%;
+                left: 50%;
+                transform: translateX(-50%);
+                border-radius: 80% 80% 60% 60%;
+                background-color: #E1A46E;
+            }
+            
+            .nuzzle {
+                width: 70%;
+                height: 40%;
+                bottom: 0%;
+                left: 50%;
+                transform: translateX(-50%);
+                
+                &::before,
+                &::after {
+                    content: '';
+                    width: 50%;
+                    height: 100%;
+                    display: inline-block;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    background-color: #C28E5F;
+                    border-radius: 70% 30% 50% 20%;
+                    z-index: 1;
+                }
+                
+                &::after {
+                    left: auto;
+                    right: 0;
+                    transform: scaleX(-1);
+                }
+            }
+            
+            .mouth {
+                width: 50%;
+                height: 90%;
+                border-radius: 100%;
+                background-color: #111827;
+                left: 50%;
+                bottom: -20%;
+                transform: translateX(-50%);
+            }
+            
+            .tongue {
+                width: 50%;
+                height: 50%;
+                background-color: #ef4444;
+                left: 50%;
+                transform: translateX(-50%);
+                bottom: 5%;
+                border-radius: 50%;
+                animation: 0.3s alternate tongueBounce infinite cubic-bezier(0.45, 0, 0.55, 1);
+            }
+            
+            @keyframes tongueBounce {
+                from {
+                    bottom: 20%;
+                }
+                
+                to {
+                    bottom: 15%;
+                }
+            }
+            
+            .nose {
+                width: 30%;
+                height: 20%;
+                left: 50%;
+                top: 0;
+                transform: translateX(-50%);
+                z-index: 10;
+                
+                &::before {
+                    content: '';
+                    width: 100%;
+                    height: 60%;
+                    top: -50%;
+                    left: 0;
+                    position: absolute;
+                    display: inline-block;
+                    background-color: #1f2937;
+                    border-radius: $fullyRound $fullyRound 0 0;
+                }
+                
+                &::after {
+                    content: '';
+                    width: 100%;
+                    height: 100%;
+                    top: 10%;
+                    left: 0;
+                    position: absolute;
+                    display: inline-block;
+                    background-color: #1f2937;
+                    border-radius: 0 0 $fullyRound $fullyRound;
+                }
+                
+                .nostrils {
+                    width: 90%;
+                    height: 100%;
+                    top: 0;
+                    z-index: 1;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    
+                    &::before {
+                        content: '';
+                        display: inline-block;
+                        width: 30%;
+                        left: 10%;
+                        height: 100%;
+                        position: absolute;
+                        background-color: #000;
+                        border-radius: 100%;
+                    }
+                    
+                    &::after {
+                        content: '';
+                        display: inline-block;
+                        width: 30%;
+                        right: 10%;
+                        height: 100%;
+                        position: absolute;
+                        background-color: #000;
+                        border-radius: 100%;
+                    }
+                }
+                
+                .highlight {
+                    top: -50%;
+                    left: 50%;
+                    width: 80%;
+                    height: 30%;
+                    transform: translateX(-50%);
+                    background-color: #fff;
+                    border-radius: $fullyRound $fullyRound 0 0;
+                    background: linear-gradient(#fff, rgba(255, 255, 255, 0));
+                    opacity: 0.3;
+                }
+            }
+            
+            .eyes {
+                width: 80%;
+                height: 35%;
+                top: 25%;
+                transform: translateX(-50%);
+                left: 50%;
+                
+                .left,
+                .right {
+                    border-radius: $fullyRound;
+                    background-color: #111;
+                    width: 25%;
+                    height: 52%;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    
+                    &::after {
+                        content: '';
+                        display: inline-block;
+                        position: absolute;
+                        width: 30%;
+                        height: 30%;
+                        background-color: #fff;
+                        opacity: 0.7;
+                        border-radius: $fullyRound;
+                        left: 15%;
+                        top: 15%;
+                    }
+                }
+                
+                .left {
+                    left: 15%;
+                }
+                
+                .right {
+                    right: 15%;
+                }
+            }
+            
+            .ears {
+                width: 90%;
+                height: 90%;
+                top: 70%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                
+                div {
+                    width: 30%;
+                    height: 50%;
+                    left: 0;
+                    top: 0;
+                    background-color: #9F6A43;
+                    transform: rotate(15deg);
+                    border-radius: 60% 20% 80% 10%;
+                    z-index: 1;
+                }
+                
+                div.right {
+                    transform: rotate(-15deg) scaleX(-1);
+                    left: auto;
+                    right: 0;
+                }
+            }
+        }
+
+        .paw {
+            position: absolute;
+            right: -20px;
+            top: 15px;
+            overflow: hidden;
+            width: 20px;
+            height: 20px;
+            transition: .3s right cubic-bezier(0.33, 1, 0.68, 1);
+            
+            &::after {
+                content: '';
+                position: absolute;
+                left: -100%;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                border-radius: 50%;
+                background-color: #E1A46E;
+                transition: .3s left cubic-bezier(0.33, 1, 0.68, 1);
+                transition-delay: .3s;
+            }
+            
+            &.top {
+                transform: rotate(-90deg);
+                top: -20px;
+                right: 40px;
+                transition: .3s top cubic-bezier(0.33, 1, 0.68, 1);
+            }
+        }
+
+        /* Custom Popup */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #ffe6f0;
+            padding: 20px;
+            border: 3px solid #ff99cc;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            animation: popIn 0.5s ease;
+        }
+
+        .popup p {
+            margin: 0;
+            font-size: 1em;
+            color: #ff66b2;
+        }
+
+        .popup .close {
+            margin-top: 10px;
+            padding: 5px 15px;
+            background: #ff99cc;
+            border: none;
+            border-radius: 20px;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        /* Animations */
+        @keyframes wobble {
+            0% { transform: rotate(0deg); }
+            25% { transform: rotate(3deg); }
+            75% { transform: rotate(-3deg); }
+            100% { transform: rotate(0deg); }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        @keyframes popToast {
+            0% { transform: translateX(-50%) translateY(15px); opacity: 0; }
+            50% { transform: translateX(-50%) translateY(-15px); opacity: 1; }
+            100% { transform: translateX(-50%) translateY(-30px); opacity: 0; }
+        }
+
+        @keyframes blink {
+            0%, 90% { transform: scaleY(1); }
+            95% { transform: scaleY(0.1); }
+            100% { transform: scaleY(1); }
+        }
+
+        @keyframes popIn {
+            0% { transform: translate(-50%, -50%) scale(0); }
+            100% { transform: translate(-50%, -50%) scale(1); }
+        }
+
+        @keyframes floatCloud {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(10px); }
+        }
+
+        /* Floating Stars */
+        .star {
+            position: absolute;
+            color: #ff66b2;
+            font-size: 1.5em;
+            animation: floatStar 4s infinite;
+        }
+
+        @keyframes floatStar {
+            0% { transform: translateY(100vh); opacity: 0.7; }
+            100% { transform: translateY(-100vh); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="message-box">
+            <span class="eyes">◕‿◕</span>
+            <h1>Heyy sis cutee!</h1>
+            <div class="toast">Chob juk</div>
+            <p>Hey! I wanted to say hi because we haven’t talked in a while. I’ve been busy with my assignments and some shit exam, and I think you’re busy too. How’s school? I hope your semester is going okay! I really miss chatting with you—it always makes me happy. Let’s catch up when you’re free from studying and also fak u . 😊</p>
+            <span class="cloud">☁</span>
+        </div>
+   
+        <div class="button-container">
+            <div class="dog">
+                <div class="tail"></div>
+                <div class="body"></div>
+                <div class="head">
+                    <div class="eyes">
+                        <div class="left"></div>
+                        <div class="right"></div>
+                    </div>
+                    <div class="nuzzle">
+                        <div class="mouth">
+                            <div class="tongue"></div>
+                        </div>
+                        <div class="nose">
+                            <div class="nostrils"></div>
+                            <div class="highlight"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ears">
+                    <div class="left"></div>
+                    <div class="right"></div>
+                </div>
+            </div>
+            <button onclick="showPopup()">Jol mer hx ot jouch chob yy ror hx.</button>
+            <div class="paw"></div>
+            <div class="paw top"></div>
+        </div>
+    </div>
+
+    <div class="popup" id="popup">
+        <p> Sis cutee jes jouch jol website ke tt lv yat ke hack prap ot jes sdab men! </p>
+        <button class="close" onclick="hidePopup()">Close</button>
+    </div>
+
+    <script>
+        // Popup functions
+        function showPopup() {
+            document.getElementById('popup').style.display = 'block';
+        }
+
+        function hidePopup() {
+            document.getElementById('popup').style.display = 'none';
+        }
+
+        // Add floating stars
+        function createStar() {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.innerHTML = '✩';
+            star.style.left = Math.random() * 100 + 'vw';
+            star.style.animationDuration = Math.random() * 2 + 3 + 's';
+            document.body.appendChild(star);
+            setTimeout(() => star.remove(), 4000);
+        }
+
+        setInterval(createStar, 800);
+    </script>
+</body>
+</html>
