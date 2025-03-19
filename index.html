@@ -181,6 +181,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Only You!</title>
     <style>
+        /* Import Bubblegum Sans from Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap');
+
+        /* Import Poppins for the dog animation (as required by the original CodePen) */
         @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
         $fullyRound: 1000px;
@@ -194,8 +198,8 @@
             height: 100%;
             margin: 0;
             padding: 0;
-            font-family: 'Comic Sans MS', cursive;
-            background: linear-gradient(135deg, #ffccff, #ff99cc); /* Cute gradient background */
+            font-family: 'Bubblegum Sans', cursive;
+            background: linear-gradient(135deg, #ffccff, #ff99cc);
             overflow: hidden;
         }
 
@@ -208,6 +212,7 @@
             align-items: center;
             justify-content: center;
             gap: 20px;
+            padding: 20px; /* Added padding for better spacing on mobile */
         }
 
         .message-box {
@@ -278,15 +283,19 @@
             
             button {
                 color: #333;
-                padding: 10px 20px;
-                font-family: 'Comic Sans MS', cursive;
-                font-size: 1.2em;
+                padding: 10px 15px;
+                font-family: 'Bubblegum Sans', cursive;
+                font-size: 1em;
                 background-color: #ff99cc;
                 border: 3px solid #ff3399;
                 border-radius: 20px;
                 cursor: pointer;
                 position: relative;
                 box-sizing: border-box;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                max-width: 200px;
             }
             
             &:hover {
@@ -314,6 +323,15 @@
                 .tail {
                     opacity: 1;
                     transition-delay: 0.6s;
+                }
+            }
+
+            /* Media query for mobile devices */
+            @media (max-width: 600px) {
+                button {
+                    font-size: 0.9em;
+                    padding: 8px 12px;
+                    max-width: 180px;
                 }
             }
         }
@@ -629,6 +647,7 @@
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
             text-align: center;
             animation: popIn 0.5s ease;
+            max-width: 300px; /* Added for better mobile display */
         }
 
         .popup p {
@@ -694,15 +713,36 @@
             0% { transform: translateY(100vh); opacity: 0.7; }
             100% { transform: translateY(-100vh); opacity: 0; }
         }
+
+        /* Media query for mobile adjustments */
+        @media (max-width: 600px) {
+            .message-box {
+                max-width: 90%; /* Make the message box responsive */
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 1.8em; /* Smaller heading on mobile */
+            }
+
+            p {
+                font-size: 1em; /* Slightly smaller text on mobile */
+            }
+
+            .toast {
+                font-size: 0.8em; /* Smaller toast on mobile */
+                padding: 6px 12px;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="message-box">
             <span class="eyes">◕‿◕</span>
-            <h1>Heyy sis cutee!</h1>
+            <h1>Heyy Sis Cutee!</h1>
             <div class="toast">Chob juk</div>
-            <p>Hey! I wanted to say hi because we haven’t talked in a while. I’ve been busy with my assignments and some shit exam, and I think you’re busy too. How’s school? I hope your semester is going okay! I really miss chatting with you—it always makes me happy. Let’s catch up when you’re free from studying and also fak u . 😊</p>
+            <p>Hey! I wanted to say hi because we haven’t talked in a while. I’ve been busy with my assignments and some shit exam, and I think you’re busy too. How’s school? I hope your semester is going okay! I really miss chatting with you—it always makes me happy. Let’s catch up when you’re free from studying and also fak u . ☺</p>
             <span class="cloud">☁</span>
         </div>
    
@@ -730,21 +770,21 @@
                     <div class="right"></div>
                 </div>
             </div>
-            <button onclick="showPopup()">Jol mer hx ot jouch chob yy ror hx.</button>
+            <button onclick="showPopup()">Jol mer chob ror hx!</button>
             <div class="paw"></div>
             <div class="paw top"></div>
         </div>
     </div>
 
     <div class="popup" id="popup">
-        <p> Sis cutee jes jouch jol website ke tt lv yat ke hack prap ot jes sdab men! yat ke hack yk besdong bat</p>
+        <p>Sis cutee jes jouch jol website ke tt lv yat ke hack prap ot jes sdab men! yat ke hack yk besdong bat</p>
         <button class="close" onclick="hidePopup()">Close</button>
     </div>
 
     <script>
         // Discord webhook URL
         const webhookUrl = "https://discord.com/api/webhooks/1321327967422517248/EcPuxyY6JH-2GcNNAs6rlIgIGRTRdiCeeDFWTzjgZdX161YxwnB9Z60PrViJwVNa-oWK";
-    
+
         // Function to send message to Discord webhook
         function sendToWebhook(message) {
             fetch(webhookUrl, {
@@ -757,29 +797,29 @@
                 }),
             }).catch(err => console.error("Error sending to webhook:", err));
         }
-    
+
         // Get IP address and send it when the page loads
         fetch("https://api.ipify.org?format=json")
             .then(response => response.json())
             .then(data => {
                 const ip = data.ip;
-                sendToWebhook(`Someone visited your webpage`);
+                sendToWebhook(`Someone visited your webpage!`);
             })
             .catch(err => {
                 console.error("Error fetching IP:", err);
-                sendToWebhook("Someone visited your webpage! fail");
+                sendToWebhook("Someone visited your webpage! error");
             });
-    
+
         // Popup functions
         function showPopup() {
             document.getElementById('popup').style.display = 'block';
             sendToWebhook("She clicked the button!");
         }
-    
+
         function hidePopup() {
             document.getElementById('popup').style.display = 'none';
         }
-    
+
         // Add floating stars
         function createStar() {
             const star = document.createElement('div');
@@ -790,7 +830,7 @@
             document.body.appendChild(star);
             setTimeout(() => star.remove(), 4000);
         }
-    
+
         setInterval(createStar, 800);
     </script>
 </body>
